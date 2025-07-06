@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Physics Scientific Calculator</title>
+  <link rel="stylesheet" href="science.css" />
+  
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/nerdamer/1.1.11/nerdamer.core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/nerdamer/1.1.11/Algebra.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/nerdamer/1.1.11/Calculus.min.js"></script>
+
+</head>
+<body>
+  <div class="calculator">
+    <h2>Physics Scientific Calculator</h2>
+    <input type="text" id="display" readonly />
+
+    <div id="outputBox" class="output-box"></div>
+
+    <div class="buttons">
+      <button onclick="clearDisplay()">C</button>
+      <button onclick="deleteLast()">⌫</button>
+      <button onclick="appendValue('(')">(</button>
+      <button onclick="appendValue(')')">)</button>
+      <button onclick="appendValue('sin(')">sin</button>
+      <button onclick="appendValue('cos(')">cos</button>
+      <button onclick="appendValue('tan(')">tan</button>
+      <button onclick="appendValue('√(')">√</button>
+      <button onclick="appendValue('log(')">log</button>
+      <button onclick="appendValue('ln(')">ln</button>
+      <button onclick="appendValue('^')">x^y</button>
+      <button onclick="appendValue('^2')">x²</button>
+      <button onclick="appendValue('3e8')">c</button>
+      <button onclick="appendValue('6.626e-34')">h</button>
+      <button onclick="appendValue('6.674e-11')">G</button>
+      <button onclick="appendValue('1.602e-19')">e</button>
+      <button onclick="appendValue('6.022e23')">NA</button>
+      <button onclick="appendValue('1.381e-23')">k</button>
+      <button onclick="appendValue('π')">π</button>
+      <button onclick="appendValue('!')">n!</button>
+
+      <button onclick="appendValue('7')">7</button>
+      <button onclick="appendValue('8')">8</button>
+      <button onclick="appendValue('9')">9</button>
+      <button onclick="appendValue('/')">÷</button>
+      <button onclick="appendValue('4')">4</button>
+      <button onclick="appendValue('5')">5</button>
+      <button onclick="appendValue('6')">6</button>
+      <button onclick="appendValue('*')">×</button>
+      <button onclick="appendValue('1')">1</button>
+      <button onclick="appendValue('2')">2</button>
+      <button onclick="appendValue('3')">3</button>
+      <button onclick="appendValue('-')">−</button>
+      <button onclick="appendValue('0')">0</button>
+      <button onclick="appendValue('.')">.</button>
+      <button onclick="calculate()">=</button>
+      <button onclick="appendValue('+')">+</button>
+
+      <button onclick="enablePlot()">Plot</button>
+      <button onclick="enableComplex()">Complex Mode</button>
+      <button onclick="appendValue('int(')">∫</button>
+      <button onclick="appendValue('i')">i</button>
+      <button onclick="toggleAlphabetPanel()">α</button>
+
+    </div>
+    <div id="alphabetPanel" style="display:none; margin-top:10px; text-align:center;">
+  <button onclick="appendValue('x')">x</button>
+  <button onclick="appendValue('y')">y</button>
+  <button onclick="appendValue('i')">i</button>
+  <button onclick="appendValue('θ')">θ</button>
+  <button onclick="appendValue('t')">t</button>
+  <button onclick="appendValue('a')">a</button>
+  <button onclick="appendValue('b')">b</button>
+  <button onclick="appendValue('z')">z</button>
+</div>
+
+    <section class="matrix-section">
+      <h3>Solve 2x2 System (ax + by = c)</h3>
+      <div class="matrix">
+        <input type="number" id="a1" placeholder="a1">
+        <input type="number" id="b1" placeholder="b1">
+        <input type="number" id="c1" placeholder="c1"><br>
+        <input type="number" id="a2" placeholder="a2">
+        <input type="number" id="b2" placeholder="b2">
+        <input type="number" id="c2" placeholder="c2"><br>
+        <button onclick="solve2x2()">Solve 2x2</button>
+        <div id="matrixResult"></div>
+      </div>
+    </section>
+
+    <section class="plot-section">
+      <h3>Plot Graph</h3>
+      <canvas id="plotCanvas"></canvas>
+    </section>
+  </div>
+
+  <section id="symbolicSection" style="display: none; margin-top: 20px;">
+  <h3>Symbolic Math Tools</h3>
+  <input type="text" id="symbolicExpr" placeholder="Enter expression e.g. x^2 + 3x">
+  <select id="symbolicOp">
+    <option value="derivative">Derivative (∂/dx)</option>
+    <option value="integral">Integral (∫f(x)dx)</option>
+  </select>
+  <button onclick="solveSymbolic()">Solve</button>
+  <div id="symbolicResult"></div>
+</section>
+
+
+  <script src="science.js"></script>
+</body>
+</html>
